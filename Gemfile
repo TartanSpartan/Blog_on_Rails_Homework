@@ -29,9 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'cancancan'
 gem 'bootstrap', '~> 5.0.0'
-# gem 'jquery-rails'
+gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4.1'
-# gem 'sassc-rails', '>= 2.1.0'
+gem 'sassc-rails', '>= 2.1.0'
 gem 'font-awesome-sass', '~> 5.12.0'
 
 group :development, :test do

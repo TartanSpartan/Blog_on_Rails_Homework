@@ -7,13 +7,13 @@
 
 //= require popper
 
-//= require bootstrap
-
 //= require rails-ujs
 
 //= require turbolinks
 
 //= require_tree .
+
+//= require bootstrap-sprockets
 
 
 // import Rails from "@rails/ujs"

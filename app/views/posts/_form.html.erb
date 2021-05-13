@@ -1,0 +1,17 @@
+<%= form_with(model: @post, local: true) do |form|%>
+<div>
+    <% if @post.errors.present?%>
+    <%= @post.errors.full_messages.join(', ')%>
+    <% end %>
+</div>
+<div>
+    <%= form.label :title%><br>
+    <%= form.text_field :title %>
+</div>
+<div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, cols: 80, rows:5%>
+    <br>
+    <%= form.submit %>
+</div>
+<% end %> 

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
     # Set up actions which will be executed first, before the CRUD actions
-    before_action :find_post, only: [:edit,: update, :show, :destroy]
+    before_action :find_post, only: [:edit, :update, :show, :destroy]
     before_action :authenticate_user!, except: [:index, :show]
     before_action :authorize!, only: [:edit, :update, :destroy]
 

@@ -1,0 +1,12 @@
+<div class="grid-container">
+    <section>
+        <h1>Post</h1>
+        <h1><%= @post.title %></h1>
+        <p><%= @post.body %></p>
+        <p>Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
+        <p>Last edited <%= time_ago_in_words(@post.updated_at) %> ago</p>
+        <%= link_to("Delete", post_path, method: :delete, data:{confirm:'Are you sure you want to delete this post?' }) %>
+        <br />
+        <%= link_to 'Edit', edit_post_path(@post.id)%>
+    </section>
+</div>
