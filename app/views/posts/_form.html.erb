@@ -1,17 +1,10 @@
+<div class="view">
 <%= form_with(model: @post, local: true) do |form|%>
-<div>
-    <% if @post.errors.present?%>
-    <%= @post.errors.full_messages.join(', ')%>
-    <% end %>
-</div>
-<div>
+<div class="form-group mt-5">
     <%= form.label :title%><br>
-    <%= form.text_field :title %>
-</div>
-<div>
+    <%= form.text_area :title, class: "form-control mt-1" %></>
+<div class="form-group mt-4">
     <%= form.label :body %><br>
-    <%= form.text_area :body, cols: 80, rows:5%>
-    <br>
-    <%= form.submit %>
-</div>
+    <%= form.text_area :body, class: "form-control mt-1" %>    <br>
+    <%= form.submit class: "btn btn-outline-primary mt-1" %>
 <% end %> 

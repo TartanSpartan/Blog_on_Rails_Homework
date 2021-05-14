@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
     has_many :comments, dependent: :destroy
+
     before_save :capitalize_title # Include this as a function to be run before saving, and to account for case insensitivity
 
     # Validations
@@ -10,7 +11,6 @@ class Post < ApplicationRecord
 
     validates :body, presence: true, length: {minimum: 50}
     # Likewise, the body column must be present and contain a minimum of 50 characters.
-
 
     private
 
