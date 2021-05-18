@@ -26,18 +26,7 @@
 // ActiveStorage.start()
 
 import "bootstrap";
-import "main";
-
 
 // Being forced to use button_to instead of link_to for delete, the confirmation dialogue
 // doesn't seem to come up, even by trying to prompt it with the following function. Unable
 // to get the functionality working at this time.
-
-$.rails.allowAction = function(button) {
-    if (button.data('confirm')) {
-      $.rails.showConfirmationDialog(button);
-      return false;
-    } else {
-      return true;
-    }
-  };

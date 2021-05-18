@@ -22,6 +22,8 @@ class PostsController < ApplicationController
         end
     end
 
+    # Consider bypassing delete button issue here
+
     def show  
         @comment = Comment.new
         @comments = @post.comments.order(created_at: :desc)  
