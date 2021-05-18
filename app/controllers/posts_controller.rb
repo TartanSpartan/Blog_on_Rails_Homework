@@ -14,7 +14,7 @@ class PostsController < ApplicationController
         @post = Post.new post_params
         
         if @post.save # Validate, if it passes validation then save it
-            flash[:notice] = 'New Post Sucessfully Created'
+            flash[:notice] = 'New Post Successfully Created'
             redirect_to post_path(@post.id)
         else # Default to new method
             flash[:danger] = @post.errors.full_messages.join(', ')
@@ -48,6 +48,7 @@ class PostsController < ApplicationController
 
     def destroy
         @post.destroy
+        flash[:notice] = 'Successfully Deleted Post'
         redirect_to posts_path
     end
 
