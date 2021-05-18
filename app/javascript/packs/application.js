@@ -16,17 +16,13 @@
 //= require bootstrap-sprockets
 
 
-// import Rails from "@rails/ujs"
+import Rails from "@rails/ujs"
 // import Turbolinks from "turbolinks"
-// import * as ActiveStorage from "@rails/activestorage"
-// import "channels"
+import * as ActiveStorage from "@rails/activestorage"
+import "channels"
 
-// Rails.start()
+Rails.start()
 // Turbolinks.start()
-// ActiveStorage.start()
+ActiveStorage.start()
 
 import "bootstrap";
-
-// Being forced to use button_to instead of link_to for delete, the confirmation dialogue
-// doesn't seem to come up, even by trying to prompt it with the following function. Unable
-// to get the functionality working at this time.
