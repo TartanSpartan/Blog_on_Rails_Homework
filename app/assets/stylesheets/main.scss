@@ -94,3 +94,10 @@ ul {
     padding-right: 20px;
     padding-left: 20px;  
 }
+
+@media only screen and (max-width: 1000px) {
+    .navbar-nav {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
