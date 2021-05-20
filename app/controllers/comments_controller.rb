@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
     
     before_action :find_comment, only: [:destroy]
+    before_action :authenticate_user!
+    before_action :authorize!, only: [:destroy]
 
     def create
         @post = Post.find params[:post_id]
         @comment = Comment.new comment_params
+        @comment.user = current_user
         @comment.post_id = params[:post_id]
 
         if @comment.save # Validate, if it passes validation then save it
@@ -31,5 +34,9 @@ class CommentsController < ApplicationController
 
     def find_comment
         @comment = Comment.find params[:id]
+    end
+
+    def authorize!
+        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @comment)
     end
 end
