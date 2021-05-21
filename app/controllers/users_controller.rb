@@ -13,6 +13,7 @@ class UsersController < ApplicationController
             session[:user_id]=@user.id
             redirect_to root_path, notice: "Thank you for signing up!"
         else
+            flash[:danger] = @user.errors.full_messages.join(', ')
             render :new
         end
 
