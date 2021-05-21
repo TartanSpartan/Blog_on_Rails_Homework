@@ -8,7 +8,7 @@
     </div>
 
     <div class="date">
-      <p>Posted <%= time_ago_in_words(@post.created_at) %> ago.</p>
+      <p>Posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.full_name %> .</p>
     </div>
     <div class="main-buttons">
         <div class="item">
@@ -42,7 +42,7 @@
             <small>
                 <div class="in-line">
                     <div class="item">
-                        <p>Commented <%= time_ago_in_words(comment.created_at) %> ago • 
+                        <p>Commented <%= time_ago_in_words(comment.created_at) %> ago by <%= comment.user.full_name %> • </p>
                     </div>
                     <div class="item">
                         <div class="button-link">

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
     has_many :posts, dependent: :nullify
-    has_many :comments, dpendent: :nullify
+    has_many :comments, dependent: :nullify
 
     # Validations: check for a unique, present email using regex (expression taken from Amazing Amazon project)
     validates :first_name, :last_name, presence: true

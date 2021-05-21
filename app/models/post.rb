@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
     has_many :comments, dependent: :destroy
+    belongs_to :user, optional: true
 
     before_save :capitalize_title # Include this as a function to be run before saving, and to account for case insensitivity
 

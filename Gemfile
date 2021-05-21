@@ -55,6 +55,7 @@ group :development do
   gem 'cowsay'
   gem 'pry-rails'
   gem 'faker'
+  gem 'hirb'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
