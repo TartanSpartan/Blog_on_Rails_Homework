@@ -55,6 +55,10 @@ class PostsController < ApplicationController
 
     private
 
+    def find_post
+        @post = Post.find params[:id]
+    end
+
     def post_params
         params.require(:post).permit(
             :title,
@@ -62,12 +66,7 @@ class PostsController < ApplicationController
         )
     end
 
-    def find_post
-        @post = Post.find params[:id]
-    end
-
     def authorize!
         redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @post)
     end
-
 end

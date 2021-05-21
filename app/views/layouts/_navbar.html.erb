@@ -14,7 +14,7 @@
       </li>
       <% if user_signed_in? %>
         <li class="nav-item">
-          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Hello, <%= current_user.first_name %>!</a> 
+          <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Hello, <%= link_to "#{current_user.first_name}", edit_user_path(current_user) %>!</a> 
         </li>
         <li class="nav-item">
          <%= link_to 'Sign Out', session_path, method: :delete, data:{confirm: 'Are you sure you want to sign out?'},class:"nav-link" %>

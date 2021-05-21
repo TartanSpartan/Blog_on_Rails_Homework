@@ -20,6 +20,13 @@ class UsersController < ApplicationController
     end
 
     def update
+        if @user.update user_params
+            flash[:success] = "Successfully Updated User Profile"
+            redirect_to root_path
+        else
+            flash[:danger] = @user.errors.full_messages.join(', ')
+            render :edit
+        end
     end
 
     def edit
@@ -41,4 +48,7 @@ private
         params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
     end
 
+    def authorize!
+        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @post)
+    end
 end

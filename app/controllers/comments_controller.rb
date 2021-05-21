@@ -28,12 +28,12 @@ class CommentsController < ApplicationController
 
     private
 
-    def comment_params
-        params.require(:comment).permit(:body, :id)
-    end
-
     def find_comment
         @comment = Comment.find params[:id]
+    end
+    
+    def comment_params
+        params.require(:comment).permit(:body, :id)
     end
 
     def authorize!
