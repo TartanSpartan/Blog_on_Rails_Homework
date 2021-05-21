@@ -9,10 +9,12 @@ class Ability
 
     user ||= User.new # Fresh user who will need to log in
     if user.is_admin?
-      can :manage, :all # Manage means is_admin can do everything on ALL the models 
+      can :manage, :all # Manage means admin can do everything on ALL the models 
     end
 
-    can :crud, User, :id => user.id # Associate the user ID to the current ID to authenticate
+    can :crud, User do |specific_user| #:id => user.id # Associate the user ID to the current ID to authenticate
+      user == specific_user
+    end
     
     # Authenticate that the user may post and comment with CRUD methods
     can :crud, Post do |post|

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # before_action :find_user
+    before_action :find_user, only: [:edit, :update]
     before_action :authenticate_user!, only: [:edit, :update]
     before_action :authorize!, only: [:edit, :update]
 
@@ -24,7 +24,10 @@ class UsersController < ApplicationController
             flash[:success] = "Successfully Updated User Profile"
             redirect_to root_path
         else
-            flash[:danger] = @user.errors.full_messages.join(', ')
+            @user.errors.delete(:password) # This ensures that password-related errors don't
+            # show redundantly when the user can't update them on this form in the first place
+            
+            flash[:notice] = @user.errors.full_messages.join(', ')
             render :edit
         end
     end
@@ -49,6 +52,6 @@ private
     end
 
     def authorize!
-        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @post)
+        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @user)
     end
 end
