@@ -37,6 +37,9 @@ class CommentsController < ApplicationController
     end
 
     def authorize!
-        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @comment)
+        unless can?(:crud, @comment)
+            flash[:danger] = 'Not Authorized' 
+            redirect_to root_path
+        end
     end
 end

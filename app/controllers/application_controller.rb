@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
     def authenticate_user!
       unless user_signed_in?
-        flash[:alert] = "Sign in, or sign up, to pass authentication and gain enhanced priviliges."
+        flash[:danger] = "Sign in, or sign up, to pass authentication and gain enhanced privileges."
         redirect_to root_path
       end
     end

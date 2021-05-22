@@ -67,6 +67,9 @@ class PostsController < ApplicationController
     end
 
     def authorize!
-        redirect_to root_path, alert: 'Not Authorized' unless can?(:crud, @post)
+        unless can?(:crud, @post)
+            flash[:danger] = 'Not Authorized' 
+            redirect_to root_path
+        end
     end
 end

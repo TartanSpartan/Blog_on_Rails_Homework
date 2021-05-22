@@ -1,4 +1,4 @@
-<div class="form-padding">
+<div class="form">
     <h2 class="mt-2">Modify User Details</h2>
     <%= form_with model: @user, local: true do |f| %>
 
@@ -10,12 +10,17 @@
             <%= f.label :last_name %>
             <%= f.text_field :last_name, class: "form-control" %>
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3">
             <%= f.label :email %>
             <%= f.email_field :email, class: "form-control" %>
         </div>
         
-        <%= f.submit class: "btn btn-outline-primary" %>
-        <%= link_to 'Cancel', root_path, class: "btn btn-outline-danger" %>
+        <div class="user-buttons">
+            <%= f.submit class: "btn btn-outline-primary" %>
+            <%= link_to 'Cancel', root_path, class: "btn btn-outline-danger" %>
+            <div class="new-credentials">
+                <%= link_to 'Change Password', edit_password_path(@user.id), class: "btn btn-outline-primary" %>
+            </div>
+        </div>
     <% end %>
 </div>

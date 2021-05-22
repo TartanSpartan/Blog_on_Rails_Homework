@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get('/', { to: 'posts#index', as: 'root' })
   get("/session", { to: "sessions#destroy", as: :session_destroy })
   get('/users/:id/password/edit', { to: 'users#edit_password', as: 'edit_password' })
-  patch '/users/:id/password/edit', { to: "users#password_update", as: 'password_update' }
+  patch '/users/:id/password/edit', { to: "users#update_password", as: 'password_update' }
 
   resources :posts do
     resources :comments, shallow: true, only: [:create, :destroy]

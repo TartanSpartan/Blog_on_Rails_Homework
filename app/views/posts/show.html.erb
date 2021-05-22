@@ -12,20 +12,16 @@
     </div>
     <div class="main-buttons">
         <div class="item">
-        <% if can? :crud, @post %>
-             <%= link_to "Edit", 
-             edit_post_path(@post.id),
+            <%= link_to "Edit", 
+            edit_post_path(@post.id),
             class: "btn btn-outline-primary mt-3" %>
-        <% end %>
         </div>
         <div class="item">
-        <% if can? :crud, @post %>
         <%= link_to "Delete",
             post_path(@post.id),
             method: :delete,
             data: { turbolinks: false, confirm: "Are you sure you want to delete this post?" }, 
             class: "btn btn-outline-primary mt-3" %>
-        <% end %>
         </div>
     </div>
 
@@ -50,12 +46,12 @@
                     </div>
                     <div class="item">
                         <div class="button-link">
-                        <%= link_to "Delete", 
-                        comment_path(comment), 
-                        method: :delete, 
-                        data: { confirm: "Are you sure that you want to delete this comment?" }, 
-                        :class => "btn btn-link", 
-                        :id => "no-underline" %>
+                            <%= link_to "Delete", 
+                            comment_path(comment), 
+                            method: :delete, 
+                            data: { confirm: "Are you sure that you want to delete this comment?" }, 
+                            :class => "btn btn-link", 
+                            :id => "no-underline" %>
                         </div>
                     </div>
                 </div>
