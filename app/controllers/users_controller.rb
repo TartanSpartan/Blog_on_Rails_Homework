@@ -41,45 +41,21 @@ class UsersController < ApplicationController
     def update_password
         @user=current_user
         if params[:user][:password] == params[:user][:current_password]
-            flash[:alert] = "Can not use current password"
+            flash[:danger] = "Cannot use current password."
             render :edit
         elsif @user&.authenticate(params[:user][:current_password])
             if @user.update user_params
-                redirect_to edit_user_path, notice: "Profile successfully changed"
+                redirect_to edit_user_path, notice: "Password changed succesfully."
             else
-                flash[:alert] = "Passwords did not match"
+                flash[:danger] = "Passwords did not match confirmation check, or may be too short."
                 render :edit
             end
         else
-            flash[:alert] = "Current password incorrect"
+            flash[:danger] = "Current password incorrect."
             render :edit
         end
     end
-        # @user = current_user
-        # if @user&.authenticate(params[:current_password])
-        #     new_password = user_params[:new_password]
-        #     new_password_confirmation = user_params[:new_password_confirmation]
-        #     new_password_is_distinct = new_password != user_params[:current_user]
-        #     password_accept = new_password == new_password_confirmation
 
-        #     if new_password_is_distinct && password_accept
-        #         if @user.update password: new_password, password_confirmation: new_password_confirmation
-        #             flash[:notice] = "Password changed successfully."
-        #             redirect_to root_path
-        #         else 
-        #             flash[:danger] = @user.errors.full_messages.join(', ')
-        #             render :edit_password
-        #         end
-
-        #     else
-        #         flash[:danger] = @user.errors.full_messages.join(', ')
-        #         render :edit_password
-        #     end
-        # else
-        #     flash[:danger] = @user.errors.full_messages.join(', ')
-        #     render :edit_password
-        # end
-    # end
 
 private
 
