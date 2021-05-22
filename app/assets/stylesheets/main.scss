@@ -63,20 +63,6 @@ ul {
     font-size: small; 
 }
 
-
-// .wrapper {
-//     display: grid;
-//     height: 100vh;
-//     grid-gap: 0 10px;
-//     grid-template-columns: repeat(3, 1fr);
-
-//     grid-template-rows: repeat(3, 1fr);
-//     min-height: 20em;
-//     grid-template-areas:
-//     		"title title title"
-//     		"body body body"
-//   }
-
 .grid-item{
     max-width: 100vh;
 }
@@ -94,3 +80,45 @@ ul {
     padding-right: 20px;
     padding-left: 20px;  
 }
+
+@media only screen and (max-width: 1000px) {
+    .navbar-nav {
+      margin-right: auto;
+      margin-left: 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .form {
+        padding-right: 5rem;
+        padding-left: 5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .form {
+        padding-right: 10rem;
+        padding-left: 10rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .form {
+        padding-right: 20rem;
+        padding-left: 20rem;
+    }
+}
+
+  .user-buttons {
+      padding-top: 2rem
+  }
+
+
+  .new-credentials {
+      padding-top: 3rem;
+  }
+
+  .btn-outline-danger {
+      margin-left: 1rem;
+  }
+  

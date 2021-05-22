@@ -1,20 +1,22 @@
 class PostsController < ApplicationController
 
     # Set up actions which will be executed first, before the CRUD actions. 
-    # Do not need to do user handling until the Week 7- Authentication assignment.
-    # So will cut those for now.
     before_action :find_post, only: [:edit, :update, :show, :destroy]
+    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authorize!, only: [:edit, :update, :destroy]
    
     # Now for the CRUD actions
     def new
         @post = Post.new
+        @post.user = current_user
     end
 
     def create
         @post = Post.new post_params
+        @post.user = current_user
         
         if @post.save # Validate, if it passes validation then save it
-            flash[:notice] = 'New Post Sucessfully Created'
+            flash[:notice] = 'New Post Successfully Created'
             redirect_to post_path(@post.id)
         else # Default to new method
             flash[:danger] = @post.errors.full_messages.join(', ')
@@ -22,11 +24,10 @@ class PostsController < ApplicationController
         end
     end
 
-    # Consider bypassing delete button issue here
-
     def show  
         @comment = Comment.new
         @comments = @post.comments.order(created_at: :desc)  
+        puts @comment
     end
 
     def index
@@ -48,10 +49,15 @@ class PostsController < ApplicationController
 
     def destroy
         @post.destroy
-        redirect_to posts_path
+        flash[:notice] = 'Successfully Deleted Post'
+        redirect_to root_path
     end
 
     private
+
+    def find_post
+        @post = Post.find params[:id]
+    end
 
     def post_params
         params.require(:post).permit(
@@ -60,8 +66,10 @@ class PostsController < ApplicationController
         )
     end
 
-    def find_post
-        @post = Post.find params[:id]
+    def authorize!
+        unless can?(:crud, @post)
+            flash[:danger] = 'Not Authorized' 
+            redirect_to root_path
+        end
     end
-
 end
